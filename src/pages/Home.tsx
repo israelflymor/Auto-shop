@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Truck, Sparkles, HelpCircle, ArrowRight, Star, Clock } from 'lucide-react';
-import { motion } from 'motion/react';
+import { ShieldCheck, Truck, Sparkles, HelpCircle, ArrowRight, Star, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { SERVICES, FAQS } from '../data/content';
 import SEO from '../components/SEO';
 import { SEO_BLUEPRINT } from '../data/content';
@@ -20,9 +21,61 @@ import heroPartsImg from '../assets/images/hero_automotive_parts_1782616626369.j
 import sourcingWarehouseImg from '../assets/images/sourcing_warehouse_1782616642114.jpg';
 import fleetTrucksImg from '../assets/images/commercial_fleet_trucks_1782616657095.jpg';
 
+// Import newly generated high-quality Hero slider images
+import heroGlowingEngineImg from '../assets/images/hero_glowing_engine_1782618383226.jpg';
+import heroPrecisionGearsImg from '../assets/images/hero_precision_gears_1782618399097.jpg';
+import heroTunerWorkshopImg from '../assets/images/hero_tuner_workshop_1782618413570.jpg';
+
 export default function Home() {
   const previewServices = SERVICES.slice(0, 3);
   const previewFaqs = FAQS.slice(0, 3);
+
+  // Hero slider slides data
+  const slides = [
+    {
+      image: heroGlowingEngineImg,
+      tag: "PERFORMANCE CORES",
+      title: "Premium OEM Performance Powertrains",
+      description: "Sourcing hard-to-find custom mechanical cores, vintage engine blocks, and high-tolerance carbon fiber components."
+    },
+    {
+      image: heroPrecisionGearsImg,
+      tag: "PRECISION TRANSMISSIONS",
+      title: "Highly Calibrated Gear Systems",
+      description: "Physical inspection and exact tolerance mapping of gears, pinions, and drive-axle assemblies before shipment."
+    },
+    {
+      image: heroTunerWorkshopImg,
+      tag: "ELITE SOURCING MATRIX",
+      title: "Southwest Florida's Freight Leader",
+      description: "Direct distribution connections bridging national distributors to regional independent repair and fleet centers."
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (!isHovered) {
+      autoplayTimerRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }, 5000);
+    }
+    return () => {
+      if (autoplayTimerRef.current) {
+        clearInterval(autoplayTimerRef.current);
+      }
+    };
+  }, [isHovered, slides.length]);
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   return (
     <div className="bg-slate-50 min-h-screen">
@@ -140,17 +193,81 @@ export default function Home() {
 
               </div>
 
-              {/* Photo Card showing pristine performance parts */}
-              <div className="relative overflow-hidden rounded-2xl border border-slate-900 bg-slate-950 shadow-2xl group">
-                <ImageWithLoader 
-                  src={heroPartsImg} 
-                  alt="Premium OEM Sourced Automobile Parts" 
-                  className="w-full h-44 object-cover opacity-85 group-hover:scale-105 transition-all duration-500"
-                  priority={true}
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent p-4 text-left font-mono text-[10px] text-slate-400 z-10">
-                  <span className="text-amber-500 font-bold block">PRECISION-MAPPED FITMENTS</span>
-                  <span>Physical verification of rare powertrain, engine, and electrical parts prior to local freight dispatch.</span>
+              {/* Premium Interactive Hero Image Slider */}
+              <div 
+                className="relative overflow-hidden rounded-2xl border border-slate-900 bg-slate-950 shadow-2xl group/slider h-72 sm:h-80 flex flex-col justify-end"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                id="hero-image-slider"
+              >
+                {/* Image Track */}
+                <div className="absolute inset-0 z-0">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentSlide}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 0.85, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="w-full h-full"
+                    >
+                      <ImageWithLoader 
+                        src={slides[currentSlide].image} 
+                        alt={slides[currentSlide].title} 
+                        className="w-full h-full object-cover animate-[none]"
+                        priority={true}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Dark Vignette Overlay for maximum typography legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent z-10 pointer-events-none" />
+
+                {/* Interactive Navigation Arrows */}
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); handlePrev(); }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/60 border border-slate-800 text-slate-300 hover:text-amber-500 hover:bg-slate-950 opacity-0 group-hover/slider:opacity-100 transition-all active:scale-90"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => { e.preventDefault(); handleNext(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-950/60 border border-slate-800 text-slate-300 hover:text-amber-500 hover:bg-slate-950 opacity-0 group-hover/slider:opacity-100 transition-all active:scale-90"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Content Overlay */}
+                <div className="relative p-5 sm:p-6 text-left z-10 pointer-events-none">
+                  <span className="inline-block text-[9px] font-mono font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-md mb-2 tracking-widest uppercase animate-pulse">
+                    {slides[currentSlide].tag}
+                  </span>
+                  <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight line-clamp-1 mb-1.5">
+                    {slides[currentSlide].title}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed line-clamp-2 max-w-sm">
+                    {slides[currentSlide].description}
+                  </p>
+                </div>
+
+                {/* Slide Pagination Dots / Progress indicator */}
+                <div className="absolute bottom-4 right-5 z-20 flex gap-1.5 items-center">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={(e) => { e.preventDefault(); setCurrentSlide(index); }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        currentSlide === index ? 'w-5 bg-amber-500' : 'w-1.5 bg-slate-700 hover:bg-slate-500'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 
