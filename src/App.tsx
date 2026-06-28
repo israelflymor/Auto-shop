@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import RouteProgressBar from './components/RouteProgressBar';
 import PageLoader from './components/PageLoader';
+import { ThemeProvider } from './lib/ThemeContext';
 
 // Lazy-loaded Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -37,34 +38,36 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <HashRouter>
-      <ScrollToTop />
-      <RouteProgressBar />
-      <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800 antialiased font-sans">
-        <Header />
-        
-        {/* Main interactive stage */}
-        <main className="flex-grow">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/sourcing" element={<PartsSourcing />} />
-              <Route path="/fleet" element={<FleetSolutions />} />
-              <Route path="/request" element={<RequestPart />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-              <Route path="/terms" element={<TermsConditions />} />
-              <Route path="/brand-guide" element={<BrandGuide />} />
-              <Route path="/crm-portal" element={<AdminCRM />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </main>
+    <ThemeProvider>
+      <HashRouter>
+        <ScrollToTop />
+        <RouteProgressBar />
+        <div className="flex flex-col min-h-screen bg-zinc-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
+          <Header />
+          
+          {/* Main interactive stage */}
+          <main className="flex-grow">
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/sourcing" element={<PartsSourcing />} />
+                <Route path="/fleet" element={<FleetSolutions />} />
+                <Route path="/request" element={<RequestPart />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsConditions />} />
+                <Route path="/brand-guide" element={<BrandGuide />} />
+                <Route path="/crm-portal" element={<AdminCRM />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </main>
 
-        <Footer />
-      </div>
-    </HashRouter>
+          <Footer />
+        </div>
+      </HashRouter>
+    </ThemeProvider>
   );
 }

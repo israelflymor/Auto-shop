@@ -4,16 +4,18 @@
  */
 
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Clock, ExternalLink, HelpCircle, PenTool, ShieldCheck, ClipboardList } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ExternalLink, HelpCircle, PenTool, ShieldCheck, ClipboardList, Sun, Moon } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/content';
+import { useTheme } from '../lib/ThemeContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <footer id="main-footer" className="bg-[#121214] text-slate-300 border-t border-slate-800 pt-16 pb-8 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           
           {/* Column 1: Brand & Description */}
           <div className="space-y-4">
@@ -102,53 +104,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Trust & Partner Resources */}
-          <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4 font-mono border-b border-slate-800 pb-2">
-              Partner Resources
-            </h3>
-            <div className="space-y-3">
-              <p className="text-xs text-slate-400">
-                Access corporate assets, documentation systems, and live CRM lead queues for demonstrative purposes:
-              </p>
-              <div className="flex flex-col gap-2 pt-1">
-                <Link
-                  to="/brand-guide"
-                  className="flex items-center justify-between text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white px-3 py-2 rounded-md transition-all text-amber-500"
-                >
-                  <span className="flex items-center gap-1.5">
-                    <PenTool className="w-3.5 h-3.5" />
-                    Brand Style Guide
-                  </span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-                <Link
-                  to="/crm-portal"
-                  className="flex items-center justify-between text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white px-3 py-2 rounded-md transition-all text-amber-500"
-                >
-                  <span className="flex items-center gap-1.5">
-                    <ClipboardList className="w-3.5 h-3.5" />
-                    Lead CRM Inbox
-                  </span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-              </div>
-              <div className="border border-slate-800 bg-slate-900/40 p-2.5 rounded text-[11px] font-mono text-slate-500">
-                <div className="flex items-center gap-1 text-slate-400 mb-0.5">
-                  <ShieldCheck className="w-3 h-3 text-amber-500" />
-                  <span>Sourcing Verification</span>
-                </div>
-                <span>All requests are authenticated against official manufacturer VIN schemas before dispatch.</span>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         {/* Bottom Bar: Legals and Copyright */}
-        <div className="border-t border-slate-800 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-500">
-          <div>
-            &copy; {currentYear} {BUSINESS_INFO.name}. All rights reserved.
+        <div className="border-t border-slate-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-mono text-slate-500">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <span>&copy; {currentYear} {BUSINESS_INFO.name}. All rights reserved.</span>
+            
+            {/* Premium Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-800 bg-slate-900/60 hover:bg-slate-900 hover:border-slate-700 text-slate-400 hover:text-amber-500 transition-all active:scale-95 cursor-pointer"
+              title="Toggle application style theme"
+              id="theme-toggle-button"
+            >
+              {theme === 'dark' ? (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Dark Mode (Default)</span>
+                </>
+              ) : (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-amber-500 animate-spin-slow" />
+                  <span>Light Mode (Blended Grey)</span>
+                </>
+              )}
+            </button>
           </div>
           <div className="flex flex-wrap gap-4 sm:gap-6">
             <Link to="/privacy" className="hover:text-amber-500 transition-colors">

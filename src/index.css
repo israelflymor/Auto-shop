@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -41,4 +43,60 @@
     transform: translateX(100%);
   }
 }
+
+/* Light mode overrides: replace plain bright white backgrounds with a blended premium shade of grey */
+:root:not(.dark) .bg-white {
+  background-color: #f3f4f6 !important; /* Premium Zinc blended grey */
+}
+:root:not(.dark) .bg-slate-50, :root:not(.dark) .bg-zinc-50 {
+  background-color: #e5e7eb !important; /* Deeper blended grey for secondary levels */
+}
+
+/* Dark mode overrides: mapping light colors to high-end dark slate and obsidian tones */
+.dark .bg-white {
+  background-color: #1a1a1c !important; /* --color-slate-900 */
+}
+.dark .bg-slate-50, .dark .bg-zinc-50, .dark .bg-zinc-100 {
+  background-color: #121214 !important; /* --color-slate-800 */
+}
+.dark .text-slate-900, .dark .text-slate-950, .dark .text-slate-800, .dark .text-[#121214] {
+  color: #f8fafc !important;
+}
+.dark .text-slate-600, .dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+.dark .border-slate-100, .dark .border-slate-200, .dark .border-slate-300, .dark .border-zinc-200 {
+  border-color: #27272a !important; /* subtle dark border */
+}
+.dark .divide-slate-100, .dark .divide-slate-200, .dark .divide-zinc-200 {
+  border-color: #27272a !important;
+}
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-zinc-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #27272a !important;
+}
+
+/* Dynamic styling for form inputs, text areas, and select fields in dark mode */
+.dark input, .dark select, .dark textarea {
+  background-color: #0d0d0e !important; /* --color-slate-950 */
+  color: #f8fafc !important;
+  border-color: #27272a !important;
+}
+.dark input:focus, .dark select:focus, .dark textarea:focus {
+  border-color: #f59e0b !important; /* amber-500 focus outline color */
+  box-shadow: 0 0 0 1px #f59e0b !important;
+}
+
+/* Card hover and interactive updates in dark mode */
+.dark .hover\:bg-white:hover {
+  background-color: #1a1a1c !important;
+}
+.dark .hover\:bg-slate-50:hover, .dark .hover\:bg-zinc-50:hover {
+  background-color: #121214 !important;
+}
+
 
