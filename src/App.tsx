@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import RouteProgressBar from './components/RouteProgressBar';
 import PageLoader from './components/PageLoader';
 import { ThemeProvider } from './lib/ThemeContext';
+import { getLocalBusinessSchema } from './lib/seo-schema';
 
 // Lazy-loaded Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -37,12 +38,18 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const businessSchema = getLocalBusinessSchema();
+
   return (
     <ThemeProvider>
       <HashRouter>
         <ScrollToTop />
         <RouteProgressBar />
         <div className="flex flex-col min-h-screen bg-zinc-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+          />
           <Header />
           
           {/* Main interactive stage */}

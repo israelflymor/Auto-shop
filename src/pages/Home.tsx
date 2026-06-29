@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import SEO from '../components/SEO';
 import { SEO_BLUEPRINT } from '../data/content';
 import ImageWithLoader from '../components/ImageWithLoader';
+import Testimonials from '../components/Testimonials';
 import { 
   fadeInUp as fadeInUpVariant, 
   staggerContainer as staggerContainerVariant 
@@ -318,11 +319,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-
-
-
-
-
+      {/* Testimonials touch-friendly carousel */}
+      <Testimonials />
 
       {/* Final Sourcing Conversion Section (CTA) */}
       <motion.section 

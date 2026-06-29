@@ -9,6 +9,7 @@ import { FAQS } from '../data/content';
 import { FaqItem } from '../types';
 import SEO from '../components/SEO';
 import { SEO_BLUEPRINT } from '../data/content';
+import { getFAQPageSchema } from '../lib/seo-schema';
 
 export default function FAQ() {
   const [activeCategory, setActiveCategory] = useState<'All' | 'General' | 'Sourcing' | 'Fleet' | 'Shipping'>('All');
@@ -16,6 +17,8 @@ export default function FAQ() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const categories = ['All', 'General', 'Sourcing', 'Fleet', 'Shipping'] as const;
+
+  const faqSchema = getFAQPageSchema(FAQS);
 
   // Filter and search logic
   const filteredFaqs = FAQS.filter(faq => {
@@ -36,6 +39,10 @@ export default function FAQ() {
   return (
     <div className="bg-slate-50 min-h-screen">
       <SEO meta={SEO_BLUEPRINT.faq} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* Page Header */}
       <section className="bg-[#121214] text-white py-16 text-center border-b border-slate-800">
