@@ -7,6 +7,10 @@ import React, { useState, useEffect } from 'react';
 import { ClipboardList, CheckCircle2, AlertCircle, Clock, Search, Shield, ChevronDown, RefreshCw, Trash2, Mail, Phone, Building2, Car } from 'lucide-react';
 import { PartRequest, FleetInquiry } from '../types';
 
+function isPartRequest(lead: PartRequest | FleetInquiry): lead is PartRequest {
+  return 'vehicleYear' in lead;
+}
+
 export default function LeadCRMInbox() {
   const [activeTab, setActiveTab] = useState<'parts' | 'fleet'>('parts');
   const [partsLeads, setPartsLeads] = useState<PartRequest[]>([]);
@@ -453,7 +457,7 @@ export default function LeadCRMInbox() {
                 <div className="bg-slate-900/60 p-4 border border-slate-800/80 rounded-lg space-y-2">
                   <h4 className="text-xs font-bold text-slate-400 tracking-wider uppercase font-mono">Sourcing Target</h4>
                   <div className="space-y-1 text-xs">
-                    {'vin' in selectedLead ? (
+                    {isPartRequest(selectedLead) ? (
                       <>
                         <div className="flex items-center gap-1 text-white font-mono font-semibold">
                           <Car className="w-3.5 h-3.5 text-amber-500 mr-1" />
@@ -488,19 +492,19 @@ export default function LeadCRMInbox() {
               {/* Requirement Text */}
               <div className="bg-slate-900/40 p-4 border border-slate-800 rounded-lg space-y-2">
                 <h4 className="text-xs font-bold text-slate-400 tracking-wider uppercase font-mono">
-                  {'vin' in selectedLead ? "Specific Parts Needed" : "Current Operational Challenges"}
+                  {isPartRequest(selectedLead) ? "Specific Parts Needed" : "Current Operational Challenges"}
                 </h4>
                 <div className="text-xs font-mono text-white leading-relaxed bg-slate-950 p-3 rounded border border-slate-850">
                   <span className="text-amber-500 font-bold">
-                    {'vin' in selectedLead ? selectedLead.partNeeded : selectedLead.partsRequirements}
+                    {isPartRequest(selectedLead) ? selectedLead.partNeeded : selectedLead.partsRequirements}
                   </span>
                 </div>
-                {selectedLead.description && (
+                {isPartRequest(selectedLead) && selectedLead.description && (
                   <p className="text-xs text-slate-300 italic leading-relaxed pt-2 border-t border-slate-800">
                     &ldquo;{selectedLead.description}&rdquo;
                   </p>
                 )}
-                {'currentChallenges' in selectedLead && selectedLead.currentChallenges && (
+                {!isPartRequest(selectedLead) && selectedLead.currentChallenges && (
                   <p className="text-xs text-slate-300 italic leading-relaxed pt-2 border-t border-slate-800">
                     &ldquo;{selectedLead.currentChallenges}&rdquo;
                   </p>

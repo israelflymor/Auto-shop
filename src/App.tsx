@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import RouteProgressBar from './components/RouteProgressBar';
 import PageLoader from './components/PageLoader';
+import ErrorBoundary from './components/ErrorBoundary';
 import { ThemeProvider } from './lib/ThemeContext';
 import { getLocalBusinessSchema } from './lib/seo-schema';
 
@@ -54,22 +55,24 @@ export default function App() {
           
           {/* Main interactive stage */}
           <main className="flex-grow">
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/sourcing" element={<PartsSourcing />} />
-                <Route path="/fleet" element={<FleetSolutions />} />
-                <Route path="/request" element={<RequestPart />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy" element={<PrivacyPolicy />} />
-                <Route path="/terms" element={<TermsConditions />} />
-                <Route path="/brand-guide" element={<BrandGuide />} />
-                <Route path="/crm-portal" element={<AdminCRM />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/sourcing" element={<PartsSourcing />} />
+                  <Route path="/fleet" element={<FleetSolutions />} />
+                  <Route path="/request" element={<RequestPart />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsConditions />} />
+                  <Route path="/brand-guide" element={<BrandGuide />} />
+                  <Route path="/crm-portal" element={<AdminCRM />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
           </main>
 
           <Footer />

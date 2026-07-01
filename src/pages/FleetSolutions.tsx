@@ -262,7 +262,7 @@ export default function FleetSolutions() {
                           placeholder="e.g. Southwest Marine Logistics"
                           className={`w-full bg-white border ${errors.companyName ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.companyName && <p className="text-[10px] text-rose-600 mt-1">{errors.companyName.message}</p>}
+                        {errors.companyName && <p className="text-[10px] text-rose-600 mt-1">{errors.companyName.message as string}</p>}
                       </div>
 
                       {/* Contact Name */}
@@ -274,7 +274,7 @@ export default function FleetSolutions() {
                           placeholder="e.g. Marcus Brody"
                           className={`w-full bg-white border ${errors.contactName ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.contactName && <p className="text-[10px] text-rose-600 mt-1">{errors.contactName.message}</p>}
+                        {errors.contactName && <p className="text-[10px] text-rose-600 mt-1">{errors.contactName.message as string}</p>}
                       </div>
                     </div>
 
@@ -288,7 +288,7 @@ export default function FleetSolutions() {
                           placeholder="e.g. m.brody@company.com"
                           className={`w-full bg-white border ${errors.email ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.email && <p className="text-[10px] text-rose-600 mt-1">{errors.email.message}</p>}
+                        {errors.email && <p className="text-[10px] text-rose-600 mt-1">{errors.email.message as string}</p>}
                       </div>
 
                       {/* Phone Number */}
@@ -300,7 +300,7 @@ export default function FleetSolutions() {
                           placeholder="e.g. (941) 555-7890"
                           className={`w-full bg-white border ${errors.phone ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.phone && <p className="text-[10px] text-rose-600 mt-1">{errors.phone.message}</p>}
+                        {errors.phone && <p className="text-[10px] text-rose-600 mt-1">{errors.phone.message as string}</p>}
                       </div>
                     </div>
 
@@ -314,7 +314,7 @@ export default function FleetSolutions() {
                           placeholder="e.g. 15"
                           className={`w-full bg-white border ${errors.fleetSize ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.fleetSize && <p className="text-[10px] text-rose-600 mt-1">{errors.fleetSize.message}</p>}
+                        {errors.fleetSize && <p className="text-[10px] text-rose-600 mt-1">{errors.fleetSize.message as string}</p>}
                       </div>
 
                       {/* Vehicle types (Checkbox Matrix) */}
@@ -333,7 +333,7 @@ export default function FleetSolutions() {
                             </label>
                           ))}
                         </div>
-                        {errors.vehicleTypes && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleTypes.message}</p>}
+                        {errors.vehicleTypes && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleTypes.message as string}</p>}
                       </div>
                     </div>
 
@@ -346,7 +346,7 @@ export default function FleetSolutions() {
                         placeholder="e.g. Local stores do not stock heavy suspension components, leading to excessive service vehicle downtime."
                         className={`w-full bg-white border ${errors.currentChallenges ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                       ></textarea>
-                      {errors.currentChallenges && <p className="text-[10px] text-rose-600 mt-1">{errors.currentChallenges.message}</p>}
+                      {errors.currentChallenges && <p className="text-[10px] text-rose-600 mt-1">{errors.currentChallenges.message as string}</p>}
                     </div>
 
                     {/* Requirements */}
@@ -358,7 +358,7 @@ export default function FleetSolutions() {
                         placeholder="e.g. We require consolidated monthly billing, custom hot-shot parts staging, and 4-hour local parts logistics dispatch."
                         className={`w-full bg-white border ${errors.partsRequirements ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                       ></textarea>
-                      {errors.partsRequirements && <p className="text-[10px] text-rose-600 mt-1">{errors.partsRequirements.message}</p>}
+                      {errors.partsRequirements && <p className="text-[10px] text-rose-600 mt-1">{errors.partsRequirements.message as string}</p>}
                     </div>
 
                     {/* Notes */}

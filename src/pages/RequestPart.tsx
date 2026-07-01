@@ -292,7 +292,7 @@ export default function RequestPart() {
                           placeholder="e.g. Arthur Pendelton"
                           className={`w-full bg-white border ${errors.name ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.name && <p className="text-[10px] text-rose-600 mt-1">{errors.name.message}</p>}
+                        {errors.name && <p className="text-[10px] text-rose-600 mt-1">{errors.name.message as string}</p>}
                       </div>
 
                       <div>
@@ -303,7 +303,7 @@ export default function RequestPart() {
                           placeholder="e.g. arthur.p@outlook.com"
                           className={`w-full bg-white border ${errors.email ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.email && <p className="text-[10px] text-rose-600 mt-1">{errors.email.message}</p>}
+                        {errors.email && <p className="text-[10px] text-rose-600 mt-1">{errors.email.message as string}</p>}
                       </div>
 
                       <div>
@@ -314,7 +314,7 @@ export default function RequestPart() {
                           placeholder="e.g. (941) 555-4321"
                           className={`w-full bg-white border ${errors.phone ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.phone && <p className="text-[10px] text-rose-600 mt-1">{errors.phone.message}</p>}
+                        {errors.phone && <p className="text-[10px] text-rose-600 mt-1">{errors.phone.message as string}</p>}
                       </div>
                     </div>
 
@@ -328,7 +328,7 @@ export default function RequestPart() {
                           placeholder="e.g. 1987"
                           className={`w-full bg-white border ${errors.vehicleYear ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.vehicleYear && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleYear.message}</p>}
+                        {errors.vehicleYear && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleYear.message as string}</p>}
                       </div>
 
                       <div>
@@ -339,7 +339,7 @@ export default function RequestPart() {
                           placeholder="e.g. Chevrolet"
                           className={`w-full bg-white border ${errors.vehicleMake ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.vehicleMake && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleMake.message}</p>}
+                        {errors.vehicleMake && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleMake.message as string}</p>}
                       </div>
 
                       <div>
@@ -350,7 +350,7 @@ export default function RequestPart() {
                           placeholder="e.g. El Camino"
                           className={`w-full bg-white border ${errors.vehicleModel ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                         />
-                        {errors.vehicleModel && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleModel.message}</p>}
+                        {errors.vehicleModel && <p className="text-[10px] text-rose-600 mt-1">{errors.vehicleModel.message as string}</p>}
                       </div>
                     </div>
 
@@ -365,7 +365,7 @@ export default function RequestPart() {
                         className={`w-full bg-white border font-mono ${errors.vin ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1 uppercase tracking-wider`}
                       />
                       <span className="text-[10px] text-slate-400 mt-1 block">Exclude letters I, O, and Q. Must be exactly 17 characters.</span>
-                      {errors.vin && <p className="text-[10px] text-rose-600 mt-1 font-semibold">{errors.vin.message}</p>}
+                      {errors.vin && <p className="text-[10px] text-rose-600 mt-1 font-semibold">{errors.vin.message as string}</p>}
                     </div>
 
                     {/* Part Needed */}
@@ -377,7 +377,7 @@ export default function RequestPart() {
                         placeholder="e.g. OEM Rear Bed Chrome Molding Trim"
                         className={`w-full bg-white border ${errors.partNeeded ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                       />
-                      {errors.partNeeded && <p className="text-[10px] text-rose-600 mt-1">{errors.partNeeded.message}</p>}
+                      {errors.partNeeded && <p className="text-[10px] text-rose-600 mt-1">{errors.partNeeded.message as string}</p>}
                     </div>
 
                     {/* Description */}
@@ -389,7 +389,7 @@ export default function RequestPart() {
                         placeholder="e.g. Need the complete 3-piece chrome trim surrounding the rear bed edge. Must be original GM New Old Stock (NOS) or absolute pristine original salvage. No replicas."
                         className={`w-full bg-white border ${errors.description ? 'border-rose-500 focus:ring-rose-500' : 'border-slate-300 focus:ring-amber-500'} rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:ring-1`}
                       ></textarea>
-                      {errors.description && <p className="text-[10px] text-rose-600 mt-1">{errors.description.message}</p>}
+                      {errors.description && <p className="text-[10px] text-rose-600 mt-1">{errors.description.message as string}</p>}
                     </div>
 
                     {/* Drag-and-drop File Upload */}
@@ -456,7 +456,7 @@ export default function RequestPart() {
                           I verify that this is a legitimate parts sourcing inquiry and pass the client compliance anti-spam verification token check.
                         </span>
                       </label>
-                      {errors.spamCheck && <p className="text-[10px] text-rose-600 mt-1 font-semibold">{errors.spamCheck.message}</p>}
+                      {errors.spamCheck && <p className="text-[10px] text-rose-600 mt-1 font-semibold">{errors.spamCheck.message as string}</p>}
                     </div>
 
                     {/* Submit Button */}

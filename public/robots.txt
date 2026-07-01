@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Exclude private admin portals
+Disallow: /#/crm-portal
+Disallow: /crm-portal
+
+# Sitemap URL
+Sitemap: https://www.crotteauautoparts.com/sitemap.xml
