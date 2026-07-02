@@ -1,6 +1,4 @@
 {
   "name": "Crotteau Auto Parts LLC",
-  "description": "Premium automotive consulting, fleet solutions, and hard-to-find parts sourcing in Punta Gorda, Florida.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "description": "Premium automotive consulting, fleet solutions, and hard-to-find parts sourcing in Punta Gorda, Florida."
 }
