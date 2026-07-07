@@ -1,10 +1,17 @@
-# Crotteau Auto Parts LLC
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Premium automotive consulting, fleet solutions, and hard-to-find parts sourcing in Punta Gorda, Florida.
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/18734d08-f947-4e5b-806b-0e69dc61680e
 
 ## Run Locally
 
 **Prerequisites:**  Node.js
+
 
 1. Install dependencies:
    `npm install`
