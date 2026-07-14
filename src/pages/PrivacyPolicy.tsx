@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
             <div>
               <h2 className="text-base font-bold text-slate-950 font-mono uppercase tracking-tight">Our Commitment to Sourcing Security</h2>
               <p className="text-xs text-slate-600 leading-relaxed mt-1">
-                At Crotteau Auto Parts LLC, we treat your contact details and vehicle specs with high confidentiality. We never sell, lease, or distribute private vehicle ownership rosters, corporate fleet compositions, or personal correspondence registries.
+                At Crotteau Auto Parts LLC, we treat your contact details, phone numbers, and vehicle specs with high confidentiality. We never sell, lease, rent, or distribute private vehicle ownership rosters, corporate fleet compositions, or personal correspondence registries.
               </p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
               We collect information that you actively submit to our sourcing desk via parts request tickets, general contact forms, or fleet qualification sheets. This includes:
             </p>
             <ul className="list-disc list-inside text-xs sm:text-sm text-slate-600 pl-4 space-y-1">
-              <li><strong>Contact Information:</strong> Name, Email, Corporate Titles, Phone Numbers.</li>
+              <li><strong>Contact Information:</strong> Name, Email, Corporate Titles, and Mobile/Business Phone Numbers.</li>
               <li><strong>Vehicle Specifications:</strong> Years, Makes, Models, and 17-character VIN inputs.</li>
               <li><strong>Logistics Details:</strong> Fleet volumes, delivery addresses, shipping notes, reference drawings, and photographs.</li>
             </ul>
@@ -72,16 +72,26 @@ export default function PrivacyPolicy() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-slate-950 uppercase font-mono">3. Security and Local Storage</h3>
+            <h3 className="text-sm font-bold text-slate-950 uppercase font-mono text-amber-600 dark:text-amber-500">3. SMS &amp; Mobile Phone Number Protection (10DLC Compliance)</h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-semibold">
+              No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All other categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Your opt-in consent and phone number data are never shared or sold to affiliates, marketing groups, or outside contractors. All SMS communications are executed directly by Crotteau Auto Parts LLC staff for the sole purpose of servicing your requested parts and fleet quotes.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold text-slate-950 uppercase font-mono">4. Security and Local Storage</h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               To support an excellent user experience, our website uses industry-standard client-side storage technologies (such as <code>localStorage</code>) to temporarily persist submitted request tickets in your browser workspace. All transmission streams directed to our backend servers utilize SSL (Secure Sockets Layer) encryption schemas to prevent intercept risks.
             </p>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-slate-950 uppercase font-mono">4. Contacting our Compliance Officer</h3>
+            <h3 className="text-sm font-bold text-slate-950 uppercase font-mono">5. Contacting our Compliance Officer</h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              If you have any questions, regulatory requests, or auditing concerns regarding your parts request records or fleet data, please contact the Crotteau Compliance desk directly at:
+              If you have any questions, regulatory requests, or auditing concerns regarding your parts request records, phone number, or fleet data, please contact the Crotteau Compliance desk directly at:
             </p>
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs font-mono text-slate-700 space-y-1">
               <p><strong>Corporate Name:</strong> {BUSINESS_INFO.name}</p>

@@ -11,9 +11,9 @@ export const BUSINESS_INFO = {
   location: 'Punta Gorda, Florida',
   servingRegion: 'Charlotte County & National Sourcing Network',
   phone: '(941) 555-0190',
-  email: 'parts@crotteauautoparts.com',
+  email: 'info@crotteauautoparts.com',
   hours: 'Mon - Fri: 8:00 AM - 5:00 PM EST, Sat: By Appointment Only',
-  address: 'Punta Gorda, FL 33950',
+  address: '28200 Bermont Road, Unit 16B, Punta Gorda, FL 33982',
   foundingYear: 2024,
   primaryGoal: 'Connecting vehicle owners, fleets, and repair shops with hard-to-find components and premium consulting services.',
 };

@@ -212,7 +212,7 @@ export default function FleetSolutions() {
                     </div>
                     <div className="space-y-2">
                       <h4 className="text-lg font-bold text-slate-950">Fleet Inquiry Ticket Formed</h4>
-                      <p className="text-xs font-mono text-amber-600 font-bold bg-slate-900 px-3 py-1.5 rounded inline-block tracking-wider">
+                      <p className="text-xs font-mono text-amber-500 font-bold bg-slate-900 px-3 py-1.5 rounded inline-block tracking-wider">
                         TICKET ID: {successData.id}
                       </p>
                       <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed pt-2">

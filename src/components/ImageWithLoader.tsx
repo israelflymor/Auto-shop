@@ -21,8 +21,9 @@ export default function ImageWithLoader({
   const [isLoaded, setIsLoaded] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
-  // Generate a automatic responsive srcSet if none is provided to satisfy responsive requirements
-  const finalSrcSet = srcSet || `${src}?w=400 400w, ${src}?w=800 800w, ${src} 1200w`;
+  // Generate an automatic responsive srcSet if none is provided and src is not a base64 data URI
+  const isDataUri = src.startsWith('data:');
+  const finalSrcSet = srcSet || (isDataUri ? undefined : `${src}?w=400 400w, ${src}?w=800 800w, ${src} 1200w`);
 
   useEffect(() => {
     // Quick cache check
@@ -53,6 +54,7 @@ export default function ImageWithLoader({
               alt="loading placeholder"
               className="w-full h-full object-cover filter blur-2xl scale-110 opacity-30 select-none pointer-events-none"
               referrerPolicy="no-referrer"
+              decoding="async"
             />
           </motion.div>
         )}
@@ -65,6 +67,8 @@ export default function ImageWithLoader({
         srcSet={finalSrcSet}
         sizes={sizes}
         loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding={priority ? 'sync' : 'async'}
         onLoad={() => {
           setIsLoaded(true);
           // Small delay before removing placeholder to allow smooth visual blending
